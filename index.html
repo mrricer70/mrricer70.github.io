@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darius Yeung — Cybersecurity Professional</title>
+  <style>
+    :root {
+      --bg: #09090f;
+      --surface: #111118;
+      --surface2: #16161f;
+      --border: #1e1e2e;
+      --text: #e8e8f0;
+      --muted: #7070a0;
+      --sunset-1: #ff6b35;
+      --sunset-2: #f7931e;
+      --sunset-3: #e9436e;
+      --sunset-4: #9b27af;
+      --gradient: linear-gradient(135deg, var(--sunset-1), var(--sunset-2), var(--sunset-3), var(--sunset-4));
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .top-bar {
+      height: 4px;
+      background: var(--gradient);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      padding: 2.5rem 0 2rem;
+    }
+
+    .photo-wrap {
+      flex-shrink: 0;
+      width: 155px;
+      height: 155px;
+      border-radius: 50%;
+      padding: 3px;
+      background: var(--gradient);
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid var(--bg);
+    }
+
+    .hero-text h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-text .role {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--sunset-2);
+      text-decoration: none;
+      border: 1px solid rgba(247, 147, 30, 0.35);
+      background: rgba(247, 147, 30, 0.08);
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .hero-link:hover {
+      background: rgba(247, 147, 30, 0.18);
+      color: var(--sunset-1);
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(255, 107, 53, 0.12);
+      border: 1px solid rgba(255, 107, 53, 0.4);
+      color: var(--sunset-1);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .summary {
+      margin-top: 1rem;
+      font-size: 0.93rem;
+      color: #a8a8c8;
+      max-width: 580px;
+      line-height: 1.7;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1.75rem 0;
+    }
+
+    .section { margin-bottom: 0.5rem; }
+
+    .section-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-group h4 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--sunset-2);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.35rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: #b8b8d8;
+    }
+
+    /* Certifications */
+    .certs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .cert {
+      font-size: 0.82rem;
+      padding: 0.3rem 0.85rem;
+      border-radius: 0.5rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: #b8b8d8;
+    }
+
+    .cert.upcoming {
+      border-color: rgba(247, 147, 30, 0.4);
+      color: var(--sunset-2);
+      background: rgba(247, 147, 30, 0.07);
+    }
+
+    /* Project card */
+    .project-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gradient);
+    }
+
+    .project-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .project-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      line-height: 1.65;
+    }
+
+    .project-repo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .project-repo-link:hover {
+      color: var(--text);
+      border-color: #3e3e5e;
+    }
+
+    .project-pill {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 0.35rem;
+      background: rgba(155, 39, 175, 0.14);
+      border: 1px solid rgba(155, 39, 175, 0.35);
+      color: #c060e0;
+    }
+
+    /* Contact */
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem 2rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      color: #9090b8;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover { color: var(--sunset-1); }
+
+    .contact-link svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 0 1rem;
+      font-size: 0.72rem;
+      color: #2e2e4a;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 600px) {
+      .hero { flex-direction: column; text-align: center; }
+      .summary { text-align: left; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar"></div>
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="photo-wrap">
+        <img src="profile.jpg" alt="Darius Yeung" />
+      </div>
+      <div class="hero-text">
+        <h1>Darius Yeung</h1>
+        <div class="role">
+          Cybersecurity Professional &nbsp;·&nbsp; Corresponding Secretary, SD ISSA
+          <a class="hero-link" href="https://linkedin.com/in/darius-yeung" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+        <span class="badge">&#x25cf;&nbsp; Open to Opportunities</span>
+        <p class="summary">
+          Cybersecurity professional with hands-on experience in cloud security, SOC operations, vulnerability management, risk assessment, compliance audits, and incident response. Actively building expertise in AI security to help organizations secure AI-driven systems and emerging threat surfaces.
+        </p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Skills -->
+    <div class="section">
+      <div class="section-title">Skills &amp; Tools</div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Cloud &amp; Architecture</h4>
+          <div class="tags">
+            <span class="tag">AWS</span>
+            <span class="tag">GCP</span>
+            <span class="tag">Azure</span>
+            <span class="tag">Zero Trust</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Security Ops</h4>
+          <div class="tags">
+            <span class="tag">SOC &amp; SIEM</span>
+            <span class="tag">MITRE ATT&amp;CK</span>
+            <span class="tag">MITRE ATLAS</span>
+            <span class="tag">Security Audits</span>
+            <span class="tag">Third-Party Risk</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Tools</h4>
+          <div class="tags">
+            <span class="tag">Nessus Tenable</span>
+            <span class="tag">OpenVAS</span>
+            <span class="tag">Burp Suite</span>
+            <span class="tag">Wireshark</span>
+            <span class="tag">Zeek</span>
+            <span class="tag">Nmap</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Languages &amp; OS</h4>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">C / C++</span>
+            <span class="tag">Java</span>
+            <span class="tag">x86 Assembly</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Windows</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>AI &amp; Emerging</h4>
+          <div class="tags">
+            <span class="tag">AI/ML Security</span>
+            <span class="tag">Claude</span>
+            <span class="tag">Claude Code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Certifications -->
+    <div class="section">
+      <div class="section-title">Certifications</div>
+      <div class="certs">
+        <span class="cert">ISC2 CC</span>
+        <span class="cert">CompTIA Security+</span>
+        <span class="cert">CompTIA ITF+</span>
+        <span class="cert">Claude 101 — Anthropic Academy</span>
+        <span class="cert">AI Fluency: Framework &amp; Foundation — Anthropic Academy</span>
+        <span class="cert">AI Fluency for Students — Anthropic Academy</span>
+        <span class="cert upcoming">⏳ CompTIA CySA+ — In Progress (May 2026)</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Projects -->
+    <div class="section">
+      <div class="section-title">Projects</div>
+      <div class="project-card">
+        <h3>Personal Cover Page</h3>
+        <p>Built this interactive cover page using Claude Code — Anthropic's AI-powered CLI — as a hands-on exploration of AI-assisted development and rapid prototyping in a real-world context.</p>
+        <span class="project-pill">Built with Claude Code</span>
+      </div>
+
+      <div class="project-card" style="margin-top: 1rem;">
+        <h3>
+          USD Weather Sensor — Network Client
+          <a href="https://github.com/mrricer70/comp375-networking-project1" target="_blank" rel="noopener noreferrer" class="project-repo-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            View on GitHub
+          </a>
+        </h3>
+        <p>Developed a C-based network client at the University of San Diego (COMP375) that connected to a live weather sensor at the Belanich Engineering Building. Used Wireshark to capture and analyze packet traffic, applying networking fundamentals to real-world sensor data transmission.</p>
+        <div style="display:flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.75rem;">
+          <span class="project-pill">C</span>
+          <span class="project-pill">Wireshark</span>
+          <span class="project-pill">Packet Analysis</span>
+          <span class="project-pill">USD — Spring 2023</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Contact -->
+    <div class="section">
+      <div class="section-title">Get in Touch</div>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:dyeung0708@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m2 7 10 7 10-7"/>
+          </svg>
+          dyeung0708@gmail.com
+        </a>
+        <a class="contact-link" href="tel:+18168686648">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          (816) 868-6648
+        </a>
+        <a class="contact-link" href="https://linkedin.com/in/darius-yeung" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+          linkedin.com/in/darius-yeung
+        </a>
+        <a class="contact-link" href="https://github.com/mrricer70" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          github.com/mrricer70
+        </a>
+      </div>
+    </div>
+
+  </div>
+  <footer>Built with Claude Code &nbsp;·&nbsp; Anthropic</footer>
+</body>
+</html>
